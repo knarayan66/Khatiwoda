@@ -14,7 +14,9 @@
 						"id": "e18fa01d-adfc-431f-bbc1-848c04539b96",
 						"exec": [
 							"//console.log(JSON.parse(responsebody));",
-							"pm.environment.unset(\"homeworld\");",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});pm.environment.unset(\"homeworld\");",
 							"var data = JSON.parse(responseBody);",
 							"console.log(data);",
 							"postman.setEnvironmentVariable(\"homeworld\", data.results[0].homeworld);",
